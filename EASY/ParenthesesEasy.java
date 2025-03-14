@@ -1,3 +1,4 @@
+package EASY;
 import java.util.Stack;
 
 public class ParenthesesEasy {
