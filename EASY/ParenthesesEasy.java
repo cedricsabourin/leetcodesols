@@ -25,7 +25,7 @@ public class ParenthesesEasy {
                 s1.push(c);
             } else {
                 // if it's a closing, we check if the most recent opening is the corresponding closing we found
-
+                if (s1.isEmpty()) { return false; }
                 char top = s1.pop();
                 if (!((top == '(' && c == ')')
                  || (top == '{' && c == '}')
