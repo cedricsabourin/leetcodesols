@@ -1,0 +1,39 @@
+class Solution:
+    ########
+    # similar to binary search, but we're searching through the rows. 
+    # If the middle row contains the value we do a binary search on it
+    # If the target value is high, we set the left bound for rows to the middle one
+    # Opposite for if the value is low.
+    # If we go through everything and no row contains the target we return false at the end
+
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        leftRow, rightRow = 0, (len(matrix) - 1)
+
+        while leftRow <= rightRow:
+            midRow = leftRow + ((rightRow-leftRow)//2)
+            L, R = 0, (len(matrix[midRow]) - 1)
+            if matrix[midRow][L] <= target and matrix[midRow][R] >= target:
+                if self.binarySearch(matrix[midRow], target) > -1:
+                    return True
+                else: 
+                    return False
+            elif matrix[midRow][L] > target:
+                rightRow = midRow - 1
+            elif matrix[midRow][R] < target:
+                leftRow = midRow + 1
+
+        return False
+
+    def binarySearch(self, nums: List[int], target: int) -> int:
+            L, R = 0, (len(nums) - 1)
+
+            while L <= R:
+                mid = L + ((R - L) // 2)
+                if nums[mid] < target:
+                    L = mid + 1
+                elif nums[mid] > target:
+                    R = mid - 1
+                else:
+                    return mid
+            
+            return -1    
