@@ -1,5 +1,5 @@
 class Solution:
-    ########
+    #
     # similar to binary search, but we're searching through the rows. 
     # If the middle row contains the value we do a binary search on it
     # If the target value is high, we set the left bound for rows to the middle one
